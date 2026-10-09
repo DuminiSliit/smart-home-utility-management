@@ -1,0 +1,14 @@
+node_modules/
+.expo/
+.venv/
+__pycache__/
+*.py[cod]
+.env
+npm-debug.log
+yarn-error.log
+coverage/
+*.jsbundle
+android/.gradle/
+android/local.properties
+ios/Pods/
+ios/.xcode.env.local

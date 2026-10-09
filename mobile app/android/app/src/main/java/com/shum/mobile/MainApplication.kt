@@ -1,4 +1,4 @@
-package com.sparksense
+package com.shum.mobile
 
 import android.app.Application
 import com.facebook.react.PackageList

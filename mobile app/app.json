@@ -1,15 +1,15 @@
 {
   "expo": {
-    "name": "SparkSense",
-    "slug": "sparksense",
+    "name": "SHUM",
+    "slug": "shum",
     "version": "0.0.1",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
     "ios": {
-      "bundleIdentifier": "com.sparksense"
+      "bundleIdentifier": "com.shum.mobile"
     },
     "android": {
-      "package": "com.sparksense"
+      "package": "com.shum.mobile"
     },
     "plugins": [
       "expo-font"
