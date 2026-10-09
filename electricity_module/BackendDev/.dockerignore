@@ -1,0 +1,4 @@
+PythonFlask/.venv
+PythonFlask/__pycache__
+**/__pycache__
+**/*.py[cod]

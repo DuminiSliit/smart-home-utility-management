@@ -1,0 +1,174 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: SparkSense DynamoDB tables and AWS IoT Core MQTT ingestion
+
+Parameters:
+  DeviceThingName:
+    Type: String
+    Default: sparksense-1
+    Description: Thing name used as DeviceId in published sensor messages
+  SensorTableName:
+    Type: String
+    Default: SensorData
+  HourlyTableName:
+    Type: String
+    Default: AWS_HourlyData_24hrs
+  MonthlyTableName:
+    Type: String
+    Default: AWS_MonthlyData_30or31Days
+
+Resources:
+  SensorData:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      TableName: !Ref SensorTableName
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: DeviceId
+          AttributeType: S
+        - AttributeName: TS
+          AttributeType: N
+      KeySchema:
+        - AttributeName: DeviceId
+          KeyType: HASH
+        - AttributeName: TS
+          KeyType: RANGE
+
+  HourlyData:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      TableName: !Ref HourlyTableName
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: Period
+          AttributeType: S
+        - AttributeName: DateTime
+          AttributeType: S
+      KeySchema:
+        - AttributeName: Period
+          KeyType: HASH
+        - AttributeName: DateTime
+          KeyType: RANGE
+
+  MonthlyData:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      TableName: !Ref MonthlyTableName
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: Period
+          AttributeType: S
+        - AttributeName: DateTime
+          AttributeType: S
+      KeySchema:
+        - AttributeName: Period
+          KeyType: HASH
+        - AttributeName: DateTime
+          KeyType: RANGE
+
+  Device:
+    Type: AWS::IoT::Thing
+    Properties:
+      ThingName: !Ref DeviceThingName
+
+  DevicePolicy:
+    Type: AWS::IoT::Policy
+    Properties:
+      PolicyName: !Sub '${AWS::StackName}-DevicePolicy'
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Action: iot:Connect
+            Resource:
+              - !Sub 'arn:${AWS::Partition}:iot:${AWS::Region}:${AWS::AccountId}:client/${DeviceThingName}'
+          - Effect: Allow
+            Action: iot:Publish
+            Resource:
+              - !Sub 'arn:${AWS::Partition}:iot:${AWS::Region}:${AWS::AccountId}:topic/ESP32_AWSDB/pub'
+          - Effect: Allow
+            Action: iot:Subscribe
+            Resource:
+              - !Sub 'arn:${AWS::Partition}:iot:${AWS::Region}:${AWS::AccountId}:topicfilter/ESP32_AWSDB/sub'
+          - Effect: Allow
+            Action: iot:Receive
+            Resource:
+              - !Sub 'arn:${AWS::Partition}:iot:${AWS::Region}:${AWS::AccountId}:topic/ESP32_AWSDB/sub'
+
+  IoTRuleRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: iot.amazonaws.com
+            Action: sts:AssumeRole
+            Condition:
+              StringEquals:
+                aws:SourceAccount: !Ref AWS::AccountId
+              ArnLike:
+                aws:SourceArn: !Sub 'arn:${AWS::Partition}:iot:${AWS::Region}:${AWS::AccountId}:rule/${AWS::StackName}-SensorIngestion'
+      Policies:
+        - PolicyName: WriteSensorReadings
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: dynamodb:PutItem
+                Resource: !GetAtt SensorData.Arn
+
+  BackendAccessPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: !Sub '${AWS::StackName}-BackendAccess'
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Action: dynamodb:Query
+            Resource:
+              - !GetAtt SensorData.Arn
+              - !GetAtt HourlyData.Arn
+              - !GetAtt MonthlyData.Arn
+          - Effect: Allow
+            Action: dynamodb:PutItem
+            Resource:
+              - !GetAtt HourlyData.Arn
+              - !GetAtt MonthlyData.Arn
+
+  SensorIngestionRule:
+    Type: AWS::IoT::TopicRule
+    Properties:
+      RuleName: !Sub '${AWS::StackName}-SensorIngestion'
+      TopicRulePayload:
+        RuleDisabled: false
+        Sql: "SELECT * FROM 'ESP32_AWSDB/pub'"
+        Actions:
+          - DynamoDBv2:
+              PutItem:
+                TableName: !Ref SensorData
+                RoleArn: !GetAtt IoTRuleRole.Arn
+
+Outputs:
+  SensorTable:
+    Description: DynamoDB table populated by the AWS IoT rule
+    Value: !Ref SensorData
+  HourlyTable:
+    Value: !Ref HourlyData
+  MonthlyTable:
+    Value: !Ref MonthlyData
+  DeviceThingName:
+    Value: !Ref Device
+  DevicePolicyName:
+    Description: Attach this policy to the device certificate in AWS IoT Core
+    Value: !Ref DevicePolicy
+  BackendAccessPolicyArn:
+    Description: Attach this policy to the IAM user or role running Flask
+    Value: !Ref BackendAccessPolicy
