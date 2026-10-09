@@ -13,7 +13,6 @@
     "@expo/vector-icons": "^15.0.2",
     "@react-navigation/bottom-tabs": "^6.6.0",
     "@react-navigation/native": "^6.1.17",
-    "axios": "^1.7.7",
     "expo": "~57.0.27",
     "expo-font": "~57.0.4",
     "react": "19.2.3",
@@ -21,8 +20,7 @@
     "react-native-chart-kit": "^6.12.0",
     "react-native-safe-area-context": "~5.7.0",
     "react-native-screens": "~4.26.0",
-    "react-native-svg": "15.15.4",
-    "socket.io-client": "^4.7.5"
+    "react-native-svg": "15.15.4"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

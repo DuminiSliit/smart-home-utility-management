@@ -39,8 +39,6 @@ Replace the example address with the computer's actual LAN IPv4 address. Keep bo
 
 ```powershell
 npm test
-npm run android
-npm run ios
 ```
 
-The iOS simulator requires macOS. Physical devices can use Expo Go. After dependency changes, restart Expo with `npx expo start --clear` if the app loads a stale bundle.
+This folder is configured for Expo Go, so it does not include generated Android/iOS native projects. After dependency changes, restart Expo with `npx expo start --clear` if the app loads a stale bundle.

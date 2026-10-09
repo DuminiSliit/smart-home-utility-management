@@ -1,0 +1,30 @@
+# JavaScript and Expo
+node_modules/
+.expo/
+coverage/
+*.jsbundle
+npm-debug.log
+yarn-error.log
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+
+# Local credentials and environment files
+.env
+secrets.h
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Native build output
+build/
+dist/
+.gradle/
+Pods/
+DerivedData/
+local.properties
+*.iml
+*.keystore
