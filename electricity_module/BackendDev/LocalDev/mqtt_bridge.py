@@ -18,7 +18,7 @@ dynamodb = boto3.resource(
     aws_access_key_id=os.environ.get('AWS_ACCESS_KEY_ID', 'local'),
     aws_secret_access_key=os.environ.get('AWS_SECRET_ACCESS_KEY', 'local'),
 )
-table = dynamodb.Table(os.environ.get('SENSOR_TABLE', 'SensorData'))
+table = dynamodb.Table(os.environ.get('SENSOR_TABLE', 'SensorData')) 
 topic = os.environ.get('MQTT_TOPIC', 'ESP32_AWSDB/pub')
 
 numeric_fields = {
