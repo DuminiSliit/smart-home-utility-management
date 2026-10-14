@@ -83,7 +83,7 @@ function MetricCard({label, value, unit}) {
   return (
     <View style={styles.card}>
       <Text style={styles.label}>{label}</Text>
-      <Text style={styles.value}>{displayedValue}</Text>
+      <Text style={styles.value}>{displayedValue}</Text> 
       {value == null ? <Text style={styles.unavailable}>Not measured</Text> : null}
     </View>
   );
