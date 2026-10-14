@@ -5,7 +5,7 @@ import {
   StyleSheet,
   Text,
   View,
-} from 'react-native';
+} from 'react-native'; 
 import {LineChart} from 'react-native-chart-kit';
 import {getJson} from '../api';
 
