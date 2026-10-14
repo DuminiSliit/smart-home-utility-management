@@ -360,7 +360,7 @@ void loop() {
     Serial.println("Current sensor disabled; publishing device heartbeat only");
 #endif
 
-    if (!client.connected()) {
+    if (!client.connected()) { 
         connectAWS();
         return;
     }
