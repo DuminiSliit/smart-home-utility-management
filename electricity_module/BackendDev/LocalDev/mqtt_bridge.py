@@ -60,7 +60,7 @@ def reading_to_item(payload):
         if (
             not value.is_finite()
             or value < minimum
-            or (maximum is not None and value > maximum)
+            or (maximum is not None and value > maximum) 
         ):
             raise ValueError(f'{field} is outside its valid range')
         item[field] = value
