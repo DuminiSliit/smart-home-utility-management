@@ -246,7 +246,7 @@ void connectAWS() {
     }
 
     if (!client.connected()) {
-        Serial.println("AWS IoT Timeout!");
+        Serial.println("AWS IoT Timeout!"); 
         return;
     }
 
