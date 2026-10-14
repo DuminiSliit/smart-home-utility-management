@@ -331,7 +331,7 @@ void setup() {
 #if CURRENT_SENSOR_ENABLED
   ads.setGain(GAIN_FOUR);      // +/- 1.024V 1bit = 0.5mV
   if (!ads.begin()) {
-    Serial.println("ADS1115 not found; check sensor wiring");
+    Serial.println("ADS1115 not found; check sensor wiring"); 
     if (displayReady) {
       display.clearDisplay();
       display.setCursor(0, 0);
