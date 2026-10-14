@@ -10,7 +10,7 @@ from botocore.exceptions import BotoCoreError
 logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
 logger = logging.getLogger('sparksense-local-init')
 
-endpoint_url = os.environ['DYNAMODB_ENDPOINT_URL']
+endpoint_url = os.environ['DYNAMODB_ENDPOINT_URL'] 
 dynamodb = boto3.client(
     'dynamodb',
     endpoint_url=endpoint_url,
