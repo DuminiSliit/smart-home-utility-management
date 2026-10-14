@@ -25,7 +25,7 @@ numeric_fields = {
     'Current-A': (Decimal('0'), None),
     'Voltage-V': (Decimal('0'), None),
     'Power-W': (Decimal('0'), None),
-    'Watt-Hour': (Decimal('0'), None),
+    'Watt-Hour': (Decimal('0'), None), 
     'Frequency-Hz': (Decimal('0'), None),
     'Power-Factor': (Decimal('0'), Decimal('1')),
 }
