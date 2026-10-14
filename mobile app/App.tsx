@@ -40,7 +40,7 @@ export default function App() {
         screenOptions={{
           tabBarActiveTintColor: 'green',
           tabBarInactiveTintColor: 'grey',
-          tabBarLabelStyle: {paddingBottom: 10, fontSize: 10},
+          tabBarLabelStyle: {paddingBottom: 10, fontSize: 10}, 
           tabBarStyle: {padding: 10, height: 70},
         }}>
         <Tab.Screen name="Home" component={Home} options={{tabBarIcon: HomeTabIcon}} />
