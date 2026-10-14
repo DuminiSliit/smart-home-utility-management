@@ -82,7 +82,7 @@ def on_message(client, userdata, message):
         table.put_item(Item=item)
         logger.info('Stored reading from %s at %d', item['DeviceId'], item['TS'])
     except (KeyError, TypeError, ValueError, InvalidOperation, json.JSONDecodeError):
-        logger.exception('Ignoring invalid MQTT payload from topic %s', message.topic)
+        logger.exception('Ignoring invalid MQTT payload from topic %s', message.topic) 
 
 
 def run():
