@@ -236,7 +236,7 @@ void connectAWS() {
 #ifdef LOCAL_MQTT
     Serial.println("Connecting to local MQTT broker");
 #else
-    Serial.println("Connecting to AWS IoT");
+    Serial.println("Connecting to AWS IoT"); 
 #endif
 
     while (!client.connect(THINGNAME)) {
