@@ -8,7 +8,7 @@ import Home from './Screens/Home';
 import Settings from './Screens/Settings';
 import Statistics from './Screens/Statistics';
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator(); 
 
 type TabIconProps = {
   focused: boolean;
