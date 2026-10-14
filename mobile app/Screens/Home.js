@@ -58,7 +58,7 @@ export default function Home() {
       {data ? (
         <View style={styles.cards}>
           <MetricCard label="Current" value={data.currentA} unit="A" /> 
-          <MetricCard label="Voltage" value={data.voltageV} unit="V" />
+          <MetricCard label="Voltage" value={data.voltageV} unit="V" /> 
           <MetricCard label="Power" value={data.powerW} unit="W" />
           <MetricCard label="Energy" value={data.energyWh} unit="Wh" />
           <MetricCard label="Frequency" value={data.frequencyHz} unit="Hz" />
