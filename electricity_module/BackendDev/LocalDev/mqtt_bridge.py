@@ -40,7 +40,7 @@ def reading_to_item(payload):
     if (
         not isinstance(device_id, str)
         or not device_id.strip()
-        or isinstance(timestamp, bool)
+        or isinstance(timestamp, bool) 
         or not isinstance(timestamp, int)
         or timestamp <= 0
     ):
