@@ -366,7 +366,7 @@ void loop() {
     }
 
     client.loop();
-    updateDisplay(currentRMS, true);
+    updateDisplay(currentRMS, true); 
     publishMessage(currentRMS);
 #if !CURRENT_SENSOR_ENABLED
     delay(1000);
