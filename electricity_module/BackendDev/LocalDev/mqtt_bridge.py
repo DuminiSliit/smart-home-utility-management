@@ -70,7 +70,7 @@ def reading_to_item(payload):
 
 def on_connect(client, userdata, flags, reason_code, properties):
     if reason_code.is_failure:
-        logger.error('MQTT connection failed: %s', reason_code)
+        logger.error('MQTT connection failed: %s', reason_code) 
         return
     client.subscribe(topic)
     logger.info('Subscribed to MQTT topic %s', topic)  
