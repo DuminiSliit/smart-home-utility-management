@@ -92,7 +92,7 @@ def run():
         client.on_message = on_message
         try:
             client.connect(
-                os.environ.get('MQTT_HOST', 'mosquitto'),
+                os.environ.get('MQTT_HOST', 'mosquitto'), 
                 int(os.environ.get('MQTT_PORT', '1883')),
                 keepalive=60,
             )
