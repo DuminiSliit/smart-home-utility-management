@@ -85,7 +85,7 @@ function UsageChart({title, points}: {title: string; points: UsagePoint[]}) {
         withVerticalLabels={false}
         chartConfig={{
           backgroundColor: '#f3f7f4',
-          backgroundGradientFrom: '#f3f7f4',
+          backgroundGradientFrom: '#f3f7f4', 
           backgroundGradientTo: '#e5f1e8',
           decimalPlaces: 1,
           color: opacity => `rgba(23, 107, 54, ${opacity})`,
