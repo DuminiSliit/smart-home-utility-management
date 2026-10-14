@@ -17,7 +17,7 @@ type TabIconProps = {
 };
 
 function HomeTabIcon({focused, color, size}: TabIconProps) {
-  return <Ionicons name={focused ? 'home' : 'home-outline'} size={size} color={color} />;
+  return <Ionicons name={focused ? 'home' : 'home-outline'} size={size} color={color} />; 
 }
 
 function StatisticsTabIcon({focused, color, size}: TabIconProps) {
