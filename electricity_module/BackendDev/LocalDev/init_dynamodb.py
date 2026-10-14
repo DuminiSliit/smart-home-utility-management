@@ -25,7 +25,7 @@ dynamodb = boto3.client(
 )
 
 tables = {
-    os.environ.get('SENSOR_TABLE', 'SensorData'): [
+    os.environ.get('SENSOR_TABLE', 'SensorData'): [ 
         {'AttributeName': 'DeviceId', 'KeyType': 'HASH'},
         {'AttributeName': 'TS', 'KeyType': 'RANGE'},
     ],
