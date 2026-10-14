@@ -48,7 +48,7 @@ for attempt in range(30):
         if attempt == 29:
             logger.exception('DynamoDB Local did not become available after 30 attempts')
             raise
-        logger.warning(
+        logger.warning(  
             'DynamoDB Local is not ready (attempt %d/30): %s',
             attempt + 1,
             error,
