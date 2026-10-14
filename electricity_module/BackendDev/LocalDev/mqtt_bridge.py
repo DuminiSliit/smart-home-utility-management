@@ -73,7 +73,7 @@ def on_connect(client, userdata, flags, reason_code, properties):
         logger.error('MQTT connection failed: %s', reason_code)
         return
     client.subscribe(topic)
-    logger.info('Subscribed to MQTT topic %s', topic)
+    logger.info('Subscribed to MQTT topic %s', topic) 
 
 
 def on_message(client, userdata, message):
