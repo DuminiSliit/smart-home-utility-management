@@ -267,7 +267,7 @@ void publishMessage(float currentRMS) {
     doc["TS"] = static_cast<uint64_t>(timestamp.tv_sec) * 1000ULL
         + static_cast<uint64_t>(timestamp.tv_usec / 1000);
 #if CURRENT_SENSOR_ENABLED
-    doc["Current-A"] = currentRMS;
+    doc["Current-A"] = currentRMS; 
 #endif
     char jsonBuffer[512];
     serializeJson(doc, jsonBuffer);
