@@ -50,7 +50,7 @@ def reading_to_item(payload):
     device_name = payload.get('DeviceName')
     if device_name is not None:
         if not isinstance(device_name, str) or not device_name.strip():
-            raise ValueError('DeviceName must be a nonempty string')
+            raise ValueError('DeviceName must be a nonempty string') 
         item['DeviceName'] = device_name
 
     for field, (minimum, maximum) in numeric_fields.items():
