@@ -114,6 +114,6 @@ const styles = StyleSheet.create({
   },
   subtitle: {fontSize: 17, fontWeight: '600', marginBottom: 8},
   chartSection: {marginBottom: 20, marginHorizontal: 16},
-  error: {color: '#a12622', margin: 16},
+  error: {color: '#a12622', margin: 16}, 
   empty: {color: '#555', margin: 16},
 });
