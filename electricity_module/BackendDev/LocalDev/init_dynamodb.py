@@ -35,7 +35,7 @@ tables = {
     ],
     os.environ.get('MONTHLY_TABLE', 'AWS_MonthlyData_30or31Days'): [
         {'AttributeName': 'Period', 'KeyType': 'HASH'},
-        {'AttributeName': 'DateTime', 'KeyType': 'RANGE'},
+        {'AttributeName': 'DateTime', 'KeyType': 'RANGE'}, 
     ],
 }
 
