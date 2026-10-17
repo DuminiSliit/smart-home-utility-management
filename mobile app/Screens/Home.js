@@ -67,7 +67,7 @@ export default function Home() {
       ) : null}
       <Text style={styles.note}>
         Current is measured by the connected current sensor. Other values need a
-        voltage and power meter; they are not estimated.
+        voltage and power meter; they are not estimated. 
       </Text>
       {data?.lastSeenMs ? (
         <Text style={styles.updated}>
