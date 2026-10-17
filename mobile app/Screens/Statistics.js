@@ -4,7 +4,7 @@ import StatisticsData from './Components/StatisticsData';
 
 export default function Statistics() {
   return (
-    <ScrollView contentContainerStyle={styles.container}> 
+    <ScrollView contentContainerStyle={styles.container}>  
       <StatisticsData />
     </ScrollView>
   );
