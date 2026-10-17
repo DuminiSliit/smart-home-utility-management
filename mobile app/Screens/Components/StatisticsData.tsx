@@ -105,7 +105,7 @@ function formatDate(value: string | number) {
     : date.toLocaleDateString();
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create({ 
   title: {
     fontSize: 22,
     fontWeight: '700',
