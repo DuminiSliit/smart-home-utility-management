@@ -82,7 +82,7 @@ function UsageChart({title, points}: {title: string; points: UsagePoint[]}) {
         yAxisSuffix=" Wh"
         fromZero
         withDots={false}
-        withVerticalLabels={false}
+        withVerticalLabels={false} 
         chartConfig={{
           backgroundColor: '#f3f7f4',
           backgroundGradientFrom: '#f3f7f4', 
