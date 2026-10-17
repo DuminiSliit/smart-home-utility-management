@@ -53,7 +53,7 @@ export default function Home() {
         <Text style={styles.error}>Could not refresh live reading: {error}</Text>
       ) : null}
       {!data && !error ? (
-        <ActivityIndicator accessibilityLabel="Loading live readings" />
+        <ActivityIndicator accessibilityLabel="Loading live readings" />    
       ) : null}
       {data ? (
         <View style={styles.cards}>
