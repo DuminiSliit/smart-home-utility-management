@@ -61,7 +61,7 @@ export default function Home() {
           <MetricCard label="Voltage" value={data.voltageV} unit="V" />  
           <MetricCard label="Power" value={data.powerW} unit="W" />
           <MetricCard label="Energy" value={data.energyWh} unit="Wh" />
-          <MetricCard label="Frequency" value={data.frequencyHz} unit="Hz" />
+          <MetricCard label="Frequency" value={data.frequencyHz} unit="Hz" /> 
           <MetricCard label="Power factor" value={data.powerFactor} />
         </View>
       ) : null}
