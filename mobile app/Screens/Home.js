@@ -21,7 +21,7 @@ export default function Home() {
       }
       refreshing = true;
       try {
-        const result = await getJson('/api/live'); 
+        const result = await getJson('/api/live');  
         if (mounted) {
           setData(result);
           setError('');
