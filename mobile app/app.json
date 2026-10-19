@@ -4,7 +4,7 @@
     "slug": "shum",
     "version": "0.0.1",
     "orientation": "portrait",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "light", 
     "ios": {
       "bundleIdentifier": "com.shum.mobile" 
     },
