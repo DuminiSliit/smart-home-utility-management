@@ -22,7 +22,7 @@ describe('Flask API client', () => {
     jest.spyOn(global, 'fetch').mockResolvedValue({ok: false, status: 503});
 
     await expect(getJson('/Hourdata')).rejects.toThrow(
-      'Request /Hourdata failed with HTTP 503',
+      'Request /Hourdata failed with HTTP 503', 
     );
   });
 });
