@@ -7,14 +7,14 @@ describe('Flask API client', () => {
 
   it('returns JSON from the configured backend', async () => {
     const payload = {lastMinuteUsage: 1};
-    jest.spyOn(global, 'fetch').mockResolvedValue({ 
+    jest.spyOn(global, 'fetch').mockResolvedValue({
       ok: true,
       json: jest.fn().mockResolvedValue(payload),
     });
 
     await expect(getJson('/get_homepage_data')).resolves.toEqual(payload);
     expect(global.fetch).toHaveBeenCalledWith(
-      `${API_BASE_URL}/get_homepage_data`,
+      `${API_BASE_URL}/get_homepage_data`, 
     );
   });
 
